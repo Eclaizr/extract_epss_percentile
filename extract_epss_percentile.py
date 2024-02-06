@@ -9,13 +9,18 @@ def extract_epss(cve_id):
 
     
     infos = json.loads(text)
-    datas = infos['data'] # On obtient une liste
 
-    # On prends le premier objet de cette liste qui est un dictionnaire
-    data = datas[0]
+    if infos['data']:
 
-    # on récupère la valeur pour la clé 'epss'
-    epss = float(data['epss'])
+        datas = infos['data'] # On obtient une liste
+        # On prends le premier objet de cette liste qui est un dictionnaire
+        data = datas[0]
+    
+        # on récupère la valeur pour la clé 'epss'
+        epss = float(data['epss'])
+
+    else :
+        epss = "not defined"
 
     return epss
 
@@ -28,10 +33,16 @@ def extract_percentile(cve_id):
     infos = json.loads(text)
     datas = infos['data'] # On obtient une liste
 
-    # On prends le premier objet de cette liste qui est un dictionnaire
-    data = datas[0]
+    if infos['data']:
 
-    # on récupère la valeur pour la clé 'percentile'
-    percentile = float(data['percentile'])
+        datas = infos['data'] # On obtient une liste
+        # On prends le premier objet de cette liste qui est un dictionnaire
+        data = datas[0]
+    
+        # on récupère la valeur pour la clé 'epss'
+        percentile = float(data['percentile'])
+
+    else :
+        percentile = "not defined"
 
     return percentile
